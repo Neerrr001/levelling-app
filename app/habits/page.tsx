@@ -1,8 +1,10 @@
+import HabitList from "@/app/habits/HabitList"
+
 
 function page() {
   return (
     <div className="text-4xl font-bold ">
-        Habits
+        <HabitList />
       
     </div>
   )
