@@ -9,23 +9,25 @@ type HabitProps = {
 
 function HabitList() {
 
-    const [habits, setHabits] = useState<HabitProps[]>([
-         
+    const [habits, setHabits] = useState<HabitProps[]>([    
         {id: 1, name: "workout", completed: false},
         {id: 2, name: "gym" , completed: false},
         {id: 3, name: "read", completed: false}
-
     ])
-
     
   return (
-    <div>
-        {habits.map((habit, key)=>{
-            return <div>
-                {habit.name}
-                {habit.completed}
+    <div className=''>
+        {habits.map((habit)=>(
+            <div key={habit.id} className='flex gap-12'>
+                <div>
+                    {habit.name}
+                </div>
+                <div>
+                    {habit.completed ? "Completed":"Not completed"}
+                </div>
             </div>
-        })}
+            )
+        )}
         
     </div>
   )
