@@ -38,23 +38,22 @@ function HabitList() {
             completed:false
         }
         setHabits([...habits,newHabit])
+        setInputHabitName("");
     }
 
-
-    
   return (
     <div className=''>
         <div className='flex gap-2'>
             <div>
                 <input type="text"
-                className=''
+                className='border rounded-lg focus:ring p-2'
                 value={inputHabitName}
                 onChange={(e)=> setInputHabitName(e.target.value)} />
             </div>  
             <div>
                 <button
-                className=''
-                onClick={()=>handleButtonClick()}>
+                className='px-3 py-2 cursor-pointer active:scale-95 border rounded-lg'
+                onClick={handleButtonClick}>
                     Submit
                 </button>
             </div>
