@@ -1,19 +1,15 @@
 "use client"
 import { useState } from 'react'
+import { Habit } from "@/app/types"
 
-type HabitProps = {
-    id:number, 
-    name: string, 
-    completed: boolean
+type HabitListProps = {
+    habits:Habit[];
+    setHabits: Dispatch<SetStateAction<Habit[]>>
 }
 
-function HabitList() {
+function HabitList({habits, setHabits}: HabitListProps ) {
 
-    const [habits, setHabits] = useState<HabitProps[]>([    
-        {id: 1, name: "workout", completed: false},
-        {id: 2, name: "gym" , completed: false},
-        {id: 3, name: "read", completed: false}
-    ])
+    
     
     const [inputHabitName, setInputHabitName] = useState<string>("")
 
