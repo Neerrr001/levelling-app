@@ -11,3 +11,30 @@ generator client {
 datasource db {
   provider = "postgresql"
 }
+
+model User{
+  id  Int  @id  @default(autoincrement())
+  username  String 
+  email  String  @unique
+  passwordHash  String
+  habits  Habit[] 
+
+}
+
+model Habit{
+  id  Int  @id  @default(autoincrement())
+  name  String 
+  userId  Int
+  user  User @relation(fields: [userId], references: [id])
+  completions Completion[]
+}
+
+model Completion{
+  id  Int  @id  @default(autoincrement())
+  habitId  Int
+  date DateTime  
+  completed  Boolean
+  habit Habit @relation(fields: [habitId], references: [id])
+  @@unique([habitId,date])
+}
+
