@@ -4,42 +4,39 @@ import { Habit } from "@/app/types"
 
 type HabitListProps = {
     habits:Habit[];
-    setHabits: Dispatch<SetStateAction<Habit[]>>
 }
 
-function HabitList({habits, setHabits}: HabitListProps ) {
+function HabitList({habits}: HabitListProps ) {
+    
+    // const [inputHabitName, setInputHabitName] = useState<string>("")
 
+    // function handleHabitCompletion(id:number){
+    //     const newHabits = habits.map((habit)=>{
+    //         if(habit.id === id){
+    //             return {
+    //                 ...habit,
+    //                 completed: !habit.completed
+    //             }
+    //         }else{
+    //             return habit
+    //         }
+    //     })
+    //     setHabits(newHabits)
+    // }
     
-    
-    const [inputHabitName, setInputHabitName] = useState<string>("")
-
-    function handleHabitCompletion(id:number){
-        const newHabits = habits.map((habit)=>{
-            if(habit.id === id){
-                return {
-                    ...habit,
-                    completed: !habit.completed
-                }
-            }else{
-                return habit
-            }
-        })
-        setHabits(newHabits)
-    }
-    
-    function handleButtonClick(){
-        const newHabit = {
-            id:habits.length + 1,
-            name: inputHabitName,
-            completed:false
-        }
-        setHabits([...habits,newHabit])
-        setInputHabitName("");
-    }
+    // function handleButtonClick(){
+    //     const newHabit = {
+    //         id:habits.length + 1,
+    //         name: inputHabitName,
+    //         completed:false
+    //     }
+    //     setHabits([...habits,newHabit])
+    //     setInputHabitName("");
+    // }
 
   return (
     <div className=''>
-        <div className='flex gap-2'>
+        {/* <div className='flex gap-2'>
             <div>
                 <input type="text"
                 className='border rounded-lg focus:ring p-2'
@@ -71,8 +68,9 @@ function HabitList({habits, setHabits}: HabitListProps ) {
                 </div>
             </div>  
             ))}
-        </div>
-        
+        </div> */}
+
+        {JSON.stringify(habits)}
     </div>
   )
 }
