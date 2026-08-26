@@ -1,3 +1,5 @@
+//purpose: centralize the creation and configuration of PrismaClient, then give the rest of app one reusalbe instance.
+
 import { PrismaClient } from "../app/generated/prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 
