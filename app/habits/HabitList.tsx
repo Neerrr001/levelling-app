@@ -11,12 +11,12 @@ function HabitList({habits}: HabitListProps ) {
     
   return (
     <div className='p-2'>
-        <div>
+        <div className='flex flex-col gap-1'>
             {habits.map((habit)=>(
-                habit.name
+                <div>{habit.name}</div>
             ))}
         </div>
-        <form className="flex gap-4 mt-2"
+        <form className="flex gap-4 mt-3"
         action={addHabit}>
             <input type="text"
             name="name"
