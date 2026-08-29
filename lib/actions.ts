@@ -6,10 +6,12 @@ type addHabitInput = {
     userId: number
 }
 
-export async function addHabit({name, userId}: addHabitInput){
-    const newHabit = prisma.habit.create({
+export async function addHabit(formData: FormData){
+    const name = formData.get("name")
+    const userId = 1; 
+    const newHabit = await prisma.habit.create({
         data:{
-            name: name,
+            name: name as string,
             userId: userId
         }
     })
