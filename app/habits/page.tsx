@@ -11,7 +11,7 @@ export default async function HabitsPage(){
   return(
     <div>
       <h1>Hello {user?.username}</h1>
-      <HabitList habits={user?.habits}/>
+      <HabitList habits={user?.habits ?? []}/>
     </div>
   )
 }

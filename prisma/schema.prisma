@@ -17,7 +17,7 @@ model User{
   username  String 
   email  String  @unique
   passwordHash  String
-  timeZone  String
+  timezone  String @default("Asia/Kolkata")
   habits  Habit[] 
 
 }
