@@ -10,13 +10,14 @@ type HabitListProps = {
 function HabitList({habits}: HabitListProps ) {
     
   return (
-    <div className=''>
+    <div className='p-2'>
         <div>
             {habits.map((habit)=>(
                 habit.name
             ))}
         </div>
-        <form action={addHabit}>
+        <form className="flex gap-4 mt-2"
+        action={addHabit}>
             <input type="text"
             name="name"
             placeholder="habit"/>

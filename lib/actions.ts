@@ -1,5 +1,6 @@
 "use server"
 import prisma from "@/lib/prisma"
+import { revalidatePath } from "next/cache";
 
 type addHabitInput = {
     name: string;
@@ -15,4 +16,6 @@ export async function addHabit(formData: FormData){
             userId: userId
         }
     })
+
+    revalidatePath("/habits")
 }
