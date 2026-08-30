@@ -5,7 +5,7 @@ import { revalidatePath } from "next/cache";
 export async function addHabit(formData: FormData){
     const name = formData.get("name")
     const userId = 1; 
-    const newHabit = await prisma.habit.create({
+    await prisma.habit.create({
         data:{
             name: name as string,
             userId: userId
@@ -13,4 +13,13 @@ export async function addHabit(formData: FormData){
     })
 
     revalidatePath("/habits")
+}
+
+export async function completeHabit(habitId: number){
+    await prisma.completion.create({
+        data:{
+            habitId: habitId,
+            completedAt:new Date()
+        }
+    })
 }

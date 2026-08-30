@@ -1,5 +1,7 @@
 //purpose: centralize the creation and configuration of PrismaClient, then give the rest of app one reusalbe instance.
 
+//npx prisma generate: to regenerate the prismaClient from our curr client prisma
+
 import { PrismaClient } from "../app/generated/prisma/client"
 import { PrismaPg } from "@prisma/adapter-pg"
 
@@ -19,6 +21,5 @@ const prisma = globalForPrisma.prisma || new PrismaClient({
 if(process.env.NODE_ENV !== "production"){
     globalForPrisma.prisma = prisma; 
 }
-
 
 export default prisma 
