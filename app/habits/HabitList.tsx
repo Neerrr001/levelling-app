@@ -2,6 +2,8 @@
 import { useState } from 'react'
 import { Habit } from "@/app/types"
 import { addHabit } from "@/lib/actions"
+import { completeHabit } from "@/lib/actions"
+
 
 type HabitListProps = {
     habits:Habit[];
@@ -18,12 +20,16 @@ function HabitList({habits}: HabitListProps ) {
                         {habit.name}
                     </div>
                     <div>
-                        <button className='px-3 border rounded cursor-pointer active:scale-95'>
+                        <button 
+                        className='px-3 border rounded cursor-pointer active:scale-95'
+                        onClick={()=>{
+                            completeHabit(habit.id)
+                        }}>
                             Done
                         </button>
                     </div>
                     <div>
-                        
+                        {`x ${habit.completions || "0"}`}
                     </div>
                 </div>
             ))}
