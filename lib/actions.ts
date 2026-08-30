@@ -2,11 +2,6 @@
 import prisma from "@/lib/prisma"
 import { revalidatePath } from "next/cache";
 
-type addHabitInput = {
-    name: string;
-    userId: number
-}
-
 export async function addHabit(formData: FormData){
     const name = formData.get("name")
     const userId = 1; 
