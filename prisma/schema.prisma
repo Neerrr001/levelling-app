@@ -18,6 +18,7 @@ model User{
   email  String  @unique
   passwordHash  String
   timezone  String @default("Asia/Kolkata")
+  
   habits  Habit[] 
 
 }
@@ -27,14 +28,16 @@ model Habit{
   name  String 
   userId  Int
   user  User @relation(fields: [userId], references: [id])
+
   completions Completion[]
 }
 
 model Completion{
   id  Int  @id  @default(autoincrement())
   habitId  Int
-  date DateTime  @db.Date
+  completedAt  DateTime 
+
   habit Habit @relation(fields: [habitId], references: [id])
-  @@unique([habitId,date])
+  
 }
 
