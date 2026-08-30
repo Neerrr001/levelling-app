@@ -4,7 +4,11 @@ import HabitList from "./HabitList";
 export default async function HabitsPage(){
   const user = await prisma.user.findFirst({
     include:{
-      habits:true
+      habits:{
+        include:{
+          completions:true
+        }
+      }
     }
   });
 
