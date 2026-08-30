@@ -29,7 +29,7 @@ function HabitList({habits}: HabitListProps ) {
                         </button>
                     </div>
                     <div>
-                        {`x ${habit.completions || "0"}`}
+                        {`x ${habit.completions.length}`}
                     </div>
                 </div>
             ))}
