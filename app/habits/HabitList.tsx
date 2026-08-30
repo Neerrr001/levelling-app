@@ -11,9 +11,21 @@ function HabitList({habits}: HabitListProps ) {
     
   return (
     <div className='p-2'>
-        <div className='flex flex-col gap-1'>
+        <div className='flex flex-col gap-4'>
             {habits.map((habit)=>(
-                <div>{habit.name}</div>
+                <div className='flex gap-5'>
+                    <div>
+                        {habit.name}
+                    </div>
+                    <div>
+                        <button className='px-3 border rounded cursor-pointer active:scale-95'>
+                            Done
+                        </button>
+                    </div>
+                    <div>
+                        
+                    </div>
+                </div>
             ))}
         </div>
         <form className="flex gap-4 mt-3"
@@ -21,7 +33,10 @@ function HabitList({habits}: HabitListProps ) {
             <input type="text"
             name="name"
             placeholder="habit"/>
-            <button type="submit">Add</button>
+            <button type="submit"
+            className='px-3 border rounded cursor-pointer active:scale-95'>
+                Add
+            </button>
         </form>
     </div>
   )
