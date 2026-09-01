@@ -12,7 +12,7 @@ export async function addHabit(formData: FormData){
         }
     })
 
-    revalidatePath("/habits")
+    revalidatePath("/user/habits")
 }
 
 export async function completeHabit(habitId: number){
@@ -23,5 +23,5 @@ export async function completeHabit(habitId: number){
         }
     })
 
-    revalidatePath("/habits")
+    revalidatePath("/user/habits")
 }
