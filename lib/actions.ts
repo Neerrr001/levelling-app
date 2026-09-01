@@ -22,4 +22,6 @@ export async function completeHabit(habitId: number){
             completedAt:new Date()
         }
     })
+
+    revalidatePath("/habits")
 }
