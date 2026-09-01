@@ -1,4 +1,5 @@
 import prisma from "@/lib/prisma"
+import ProfileForm from "./ProfileForm";
 
 export default async function ProfilePage(){
     const user = await prisma.user.findFirst({
@@ -15,7 +16,7 @@ export default async function ProfilePage(){
 
     return(
         <div>
-            
+            <ProfileForm user={user}/>
         </div>
 
     )
