@@ -1,5 +1,4 @@
 "use client"
-import { useState } from 'react'
 import { Habit } from "@/app/types"
 import { addHabit } from "@/lib/actions"
 import { completeHabit } from "@/lib/actions"
