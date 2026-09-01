@@ -6,7 +6,7 @@ export function getTodayRange(timezone:string){
 
     const localNow = toZonedTime(now,timezone) //convert instant to user's timezone
     const localStart = startOfDay(localNow); // finds local midnight
-    const localTomorrow = addDays(localNow,1); // finds local tomorrow start
+    const localTomorrow = addDays(localStart,1); // finds local tomorrow start
 
     const todayStart = fromZonedTime(localStart, timezone); //local midnight in UTC
     const tomorrowStart = fromZonedTime(localTomorrow,timezone) //local tomorrow in UTC
