@@ -25,3 +25,29 @@ export async function completeHabit(habitId: number){
 
     revalidatePath("/user/habits")
 }
+
+export async function updateProfile(id:number, formData:FormData){
+    const newUsername = formData.get("username")
+
+    if(typeof(newUsername) != "string" || newUsername.trim() == "") return; 
+
+    const newEmail = formData.get("email")
+    if(typeof(newEmail) != "string" || newEmail.trim() == "") return; 
+
+    const newTimezone = formData.get("timezone")
+    if(typeof(newTimezone) != "string" || newTimezone.trim() == "") return; 
+
+    const newUser = await prisma.user.update({
+        where:{
+            id: id
+        },
+        data:{
+            username:newUsername,
+            email:newEmail,
+            timezone:newTimezone,
+        }
+    })
+    
+    revalidatePath("/user/profile")
+    
+}
