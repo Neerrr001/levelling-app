@@ -1,6 +1,7 @@
 "use server"
 import prisma from "@/lib/prisma"
 import { revalidatePath } from "next/cache";
+import { ProfileSchema } from "./validation";
 
 export async function addHabit(formData: FormData){
     const name = formData.get("name")
@@ -28,23 +29,27 @@ export async function completeHabit(habitId: number){
 
 export async function updateProfile(id:number, formData:FormData){
     const newUsername = formData.get("username")
-
-    if(typeof(newUsername) != "string" || newUsername.trim() == "") return; 
-
     const newEmail = formData.get("email")
-    if(typeof(newEmail) != "string" || newEmail.trim() == "") return; 
-
     const newTimezone = formData.get("timezone")
-    if(typeof(newTimezone) != "string" || newTimezone.trim() == "") return; 
+
+    const result = ProfileSchema.safeParse({
+        username: newUsername,
+        email: newEmail,
+        timezone: newTimezone
+    })
+
+    if(!result.success){
+        return result.error
+    }
 
     const newUser = await prisma.user.update({
         where:{
             id: id
         },
         data:{
-            username:newUsername,
-            email:newEmail,
-            timezone:newTimezone,
+            username:result.data.username,
+            email:result.data.email,
+            timezone:result.data.timezone,
         }
     })
     
