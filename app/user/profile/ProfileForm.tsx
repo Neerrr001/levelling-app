@@ -1,7 +1,12 @@
 "use client"
 
 type userProfileProps = {
-    user:
+    user:{
+        id:number;
+        username:string;
+        email:string;
+        timezone:string;
+    }
 }
 
 function ProfileForm({user}:userProfileProps ){
@@ -13,7 +18,7 @@ function ProfileForm({user}:userProfileProps ){
             <div>
                 <div>{`username  ${user.username}`}</div>
                 <div>{`email  ${user.email}`}</div>
-                <div>{`timezone  ${user.timezon}`}</div>
+                <div>{`timezone  ${user.timezone}`}</div>
             </div>
         </div>
     )
