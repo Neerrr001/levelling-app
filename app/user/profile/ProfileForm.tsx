@@ -1,4 +1,5 @@
 "use client"
+import {updateProfile} from "@/lib/actions"
 
 type userProfileProps = {
     user:{
@@ -16,25 +17,39 @@ function ProfileForm({user}:userProfileProps ){
             className="text-2xl font-bold">Profile
             </div>
             <div>
-                <div>{`username:  ${user.username}`}</div>
-                <div>{`email:  ${user.email}`}</div>
-                <div>{`timezone:  ${user.timezone}`}</div>
-            </div>
-            <div>
-                <form action={updateProfile}>
-                    <div>
-                        <input type="text"
-                        name="username"
-                        defaultValue={user.username}
-                         />
-                        <input type="text"
-                        name="email"
-                        defaultValue={user.username}
-                         />
-                        <input type="text"
-                        name="timezone"
-                        defaultValue={user.username}
-                         />
+                <form action={()=>{
+                    updateProfile(user.id)
+                }}
+                className="flex flex-col gap-4">
+                    <div className="flex flex-col gap-3">
+                        <div className="flex gap-3">
+                            <label
+                            className="cursor-pointer" 
+                            htmlFor="username">Username:</label>
+                            <input id='username' type="text"
+                            name="username"
+                            defaultValue={user.username}/>
+                        </div>
+                        <div className="flex gap-3">
+                            <label
+                            className="cursor-pointer" 
+                            htmlFor="email">Email:</label>
+                            <input 
+                            id="email"
+                            type="text"
+                            name="email"
+                            defaultValue={user.email}/>
+                        </div>
+                        <div className="flex gap-3">
+                            <label
+                            className="cursor-pointer" 
+                            htmlFor="timezone">Timezone:</label>
+                            <input 
+                            id="timezone"
+                            type="text"
+                            name="timezone"
+                            defaultValue={user.timezone} />
+                        </div>
                     </div>
                     <button className="px-2 cursor-pointer active:scale-95 ">
                         Submit
