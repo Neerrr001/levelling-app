@@ -4,6 +4,7 @@ import ProfileForm from "./ProfileForm";
 export default async function ProfilePage(){
     const user = await prisma.user.findFirst({
         select:{
+            id:true,
             username: true,
             email:true,
             timezone:true
