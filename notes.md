@@ -12,3 +12,5 @@ Zod: is a typescript first validation library. Using Zod, we can define schemas 
 Zod's features: zero dependancies, tiny, works in node.js and all modern browsers, built-in json schema conversion 
 
 An MCP server (Model Context Protocol server) is a software program that acts as a universal bridge, allowing AI models and assistants to securely connect to external tools, databases, and filesystems
+
+Input elements with type 'number' actually return a 'string' and not a 'number'
