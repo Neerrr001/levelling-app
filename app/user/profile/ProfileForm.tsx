@@ -1,7 +1,7 @@
 "use client"
 import { useActionState } from 'react';
 import {updateProfile} from "@/lib/actions"
-import { ProfileState } from '@/app/types';
+import type { ProfileState } from '@/app/types';
 
 type userProfileProps = {
     user:{
@@ -13,13 +13,19 @@ type userProfileProps = {
 }
 
 function ProfileForm({user}:userProfileProps ){
+
+    const initialState: ProfileState = {}
+    const updateProfileWithId = updateProfile.bind(null, user.id)
+
+    const[state, formAction, isPending] = useActionState(updateProfileWithId, initialState)
+
     return(
         <div className="flex flex-col gap-3 p-2">
             <div 
             className="text-2xl font-bold">Profile
             </div>
             <div>
-                <form action={updateProfile.bind(null,user.id)}
+                <form action={formAction}
                 className="flex items-start flex-col gap-4">
                     <div className="flex flex-col gap-3">
 
