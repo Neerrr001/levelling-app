@@ -9,3 +9,12 @@ export type Habit = {
     userId:number,
     completions: Completion[]
 }
+
+export type ProfileState = {
+    message?:string,
+    errors?:{
+        username?: string[],
+        email?: string[],
+        timezone?: string[]
+    }
+}

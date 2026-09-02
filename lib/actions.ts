@@ -2,6 +2,7 @@
 import prisma from "@/lib/prisma"
 import { revalidatePath } from "next/cache";
 import { ProfileSchema } from "./validation";
+import { ProfileState } from "@/app/types";
 
 export async function addHabit(formData: FormData){
     const name = formData.get("name")

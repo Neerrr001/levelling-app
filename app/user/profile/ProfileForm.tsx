@@ -1,5 +1,7 @@
 "use client"
+import { useActionState } from 'react';
 import {updateProfile} from "@/lib/actions"
+import { ProfileState } from '@/app/types';
 
 type userProfileProps = {
     user:{
@@ -18,7 +20,7 @@ function ProfileForm({user}:userProfileProps ){
             </div>
             <div>
                 <form action={updateProfile.bind(null,user.id)}
-                className="flex flex-col gap-4">
+                className="flex items-start flex-col gap-4">
                     <div className="flex flex-col gap-3">
 
                         <div className="flex gap-3">
@@ -51,7 +53,7 @@ function ProfileForm({user}:userProfileProps ){
                         </div>
 
                     </div>
-                    <button className="px-2 cursor-pointer active:scale-95 ">
+                    <button className="px-3 py-1 border rounded cursor-pointer active:scale-95 ">
                         Submit
                     </button>
                 </form>
