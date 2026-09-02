@@ -5,3 +5,5 @@ Server components can access back-end resources directly
 gte: greater than equal to, lt: less than
 
 We cannot use 'select' and 'include' at the same level of the same query. 
+
+bind(): creates a new function with some arguments already filled in. 

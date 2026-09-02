@@ -17,11 +17,10 @@ function ProfileForm({user}:userProfileProps ){
             className="text-2xl font-bold">Profile
             </div>
             <div>
-                <form action={()=>{
-                    updateProfile(user.id)
-                }}
+                <form action={updateProfile.bind(null,user.id)}
                 className="flex flex-col gap-4">
                     <div className="flex flex-col gap-3">
+
                         <div className="flex gap-3">
                             <label
                             className="cursor-pointer" 
@@ -50,6 +49,7 @@ function ProfileForm({user}:userProfileProps ){
                             name="timezone"
                             defaultValue={user.timezone} />
                         </div>
+
                     </div>
                     <button className="px-2 cursor-pointer active:scale-95 ">
                         Submit
