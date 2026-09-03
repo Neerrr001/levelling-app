@@ -61,7 +61,7 @@ export async function updateProfile(id:number, previousState: ProfileState, form
     revalidatePath("/user/profile")
 
     return {
-        message: "Profile update successfully"
+        message: "Updated successfully"
     }
     
 }
