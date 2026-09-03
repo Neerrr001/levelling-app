@@ -28,7 +28,7 @@ export async function completeHabit(habitId: number){
     revalidatePath("/user/habits")
 }
 
-export async function updateProfile(id:number, formData:FormData){
+export async function updateProfile(id:number, previousState: ProfileState, formData:FormData): Promise<ProfileState>{
     const newUsername = formData.get("username")
     const newEmail = formData.get("email")
     const newTimezone = formData.get("timezone")
@@ -40,7 +40,11 @@ export async function updateProfile(id:number, formData:FormData){
     })
 
     if(!result.success){
-        return result.error
+        const fieldErrors = result.error.flatten().fieldErrors;
+
+        return {
+            errors:fieldErrors
+        }
     }
 
     const newUser = await prisma.user.update({
@@ -55,5 +59,9 @@ export async function updateProfile(id:number, formData:FormData){
     })
     
     revalidatePath("/user/profile")
+
+    return {
+        message: "Profile update successfully"
+    }
     
 }
