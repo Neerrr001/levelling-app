@@ -74,8 +74,10 @@ function ProfileForm({user}:userProfileProps ){
                         </div>
 
                     </div>
-                    <button className="px-3 py-1 border rounded cursor-pointer active:scale-95 ">
-                        Submit
+                    <button 
+                    className="px-3 py-1 border rounded cursor-pointer active:scale-95 "
+                    disabled={isPending}>
+                        {isPending? "Saving...": "Save"}
                     </button>
                 </form>
             </div>
