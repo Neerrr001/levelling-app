@@ -22,7 +22,13 @@ function ProfileForm({user}:userProfileProps ){
     return(
         <div className="flex flex-col gap-3 p-2">
             <div 
-            className="text-2xl font-bold">Profile
+            className=" flex items-center gap-2 ">
+                <div className='text-2xl font-bold'>
+                    Profile
+                </div>
+                <div className=' font-semibold'>
+                    {state.message && <p>{state.message}</p>}
+                </div>
             </div>
             <div>
                 <form action={formAction}
@@ -36,6 +42,9 @@ function ProfileForm({user}:userProfileProps ){
                             <input id='username' type="text"
                             name="username"
                             defaultValue={user.username}/>
+                            {state.errors?.username?.map((error)=>(
+                                <p key={error}>{error}</p>
+                            ))}
                         </div>
                         <div className="flex gap-3">
                             <label
@@ -46,6 +55,9 @@ function ProfileForm({user}:userProfileProps ){
                             type="text"
                             name="email"
                             defaultValue={user.email}/>
+                            {state.errors?.email?.map((error)=>(
+                                <p key={error}>{error}</p>
+                            ))}
                         </div>
                         <div className="flex gap-3">
                             <label
@@ -56,6 +68,9 @@ function ProfileForm({user}:userProfileProps ){
                             type="text"
                             name="timezone"
                             defaultValue={user.timezone} />
+                            {state.errors?.timezone?.map((error)=>(
+                                <p key={error}>{error}</p>
+                            ))}
                         </div>
 
                     </div>
