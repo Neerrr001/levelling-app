@@ -5,3 +5,9 @@ export const ProfileSchema = z.object({
     email: z.string().email(),
     timezone: z.string().min(1)
 })
+
+export const SignupSchema = z.object({
+    username:z.string().min(1),
+    email: z.string().email(),
+    password: z.string().min(8),
+})
