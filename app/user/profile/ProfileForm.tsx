@@ -43,7 +43,7 @@ function ProfileForm({user}:userProfileProps ){
                             name="username"
                             defaultValue={user.username}/>
                             {state.errors?.username?.map((error)=>(
-                                <p key={error}>{error}</p>
+                                <p key={error}>Invalid username</p>
                             ))}
                         </div>
                         <div className="flex gap-3">
@@ -69,7 +69,7 @@ function ProfileForm({user}:userProfileProps ){
                             name="timezone"
                             defaultValue={user.timezone} />
                             {state.errors?.timezone?.map((error)=>(
-                                <p key={error}>{error}</p>
+                                <p key={error}>Invalid timezone</p>
                             ))}
                         </div>
 
