@@ -113,5 +113,5 @@ export async function createUser(previousState: SignupState, formdata: FormData)
     })
 
     
-    redirect("/login")
+    redirect("/login?signup=success")
 }
