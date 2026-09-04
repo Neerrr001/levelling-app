@@ -2,7 +2,7 @@
 import prisma from "@/lib/prisma"
 import { revalidatePath } from "next/cache";
 import { ProfileSchema, SignupSchema } from "./validation";
-import { ProfileState } from "@/app/types";
+import { ProfileState, SignupState } from "@/app/types";
 import { argon2 } from "argon2";
 
 export async function addHabit(formData: FormData){
@@ -67,7 +67,7 @@ export async function updateProfile(id:number, previousState: ProfileState, form
     
 }
 
-export async function createUser(previousState, formdata: FormData){
+export async function createUser(previousState: SignupState, formdata: FormData){
     const username = formdata.get("username")
     const email = formdata.get("email")
     const password = formdata.get("password")
@@ -86,13 +86,27 @@ export async function createUser(previousState, formdata: FormData){
         }
     }
 
-    const hashPassword = argon2.hash(password)
+    const existingUser = await prisma.user.findUnique({
+        where:{
+            email:result.data.email
+        }
+    })
+
+    if(existingUser){
+        return {
+            errors:{
+                email: ["An account with this email already exists"]
+            }
+        }
+    }
+
+    const hashPassword = await argon2.hash(result.data.password)
 
     await prisma.user.create({
         data:{
-            username:username,
-            email:email,
-            passwordHash: hashPassword
+            username:result.data.username,
+            email:result.data.email,
+            passwordHash:hashPassword 
 
         }
     })
