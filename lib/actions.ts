@@ -3,7 +3,7 @@ import prisma from "@/lib/prisma"
 import { revalidatePath } from "next/cache";
 import { ProfileSchema, SignupSchema } from "./validation";
 import { ProfileState, SignupState } from "@/app/types";
-import { argon2 } from "argon2";
+import * as argon2 from "argon2";
 
 export async function addHabit(formData: FormData){
     const name = formData.get("name")
