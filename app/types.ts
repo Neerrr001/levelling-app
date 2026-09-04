@@ -18,3 +18,12 @@ export type ProfileState = {
         timezone?: string[]
     }
 }
+
+export type SignupState = {
+    message?:string, 
+    errors?:{
+        username?:string[],
+        email?:string[],
+        password?:string[]
+    }
+}
