@@ -1,8 +1,18 @@
 "use client"
+import { useActionState} from "react"
+import {createUser} from "@/lib/actions"
+import type {SignupState} from "@/app/types"
+
+
 
 function SignupForm(){
+
+    const initialState: SignupState = {}
+
+    const [state, formAction, isPending] = useActionState(createUser, initialState)
+
     return(
-        <form action={} className="p-2 flex flex-col gap-3">
+        <form action={formAction} className="p-2 flex flex-col gap-3">
             <div className="text-2xl font-bold">
                 Sign up
             </div>
