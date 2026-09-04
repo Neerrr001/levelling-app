@@ -1,6 +1,7 @@
 "use server"
 import prisma from "@/lib/prisma"
 import { revalidatePath } from "next/cache";
+import {redirect} from "next/navigation"
 import { ProfileSchema, SignupSchema } from "./validation";
 import { ProfileState, SignupState } from "@/app/types";
 import * as argon2 from "argon2";
@@ -111,8 +112,6 @@ export async function createUser(previousState: SignupState, formdata: FormData)
         }
     })
 
-    return {
-        message: "Created profile successfully"
-    }
-
+    
+    redirect("/login")
 }
