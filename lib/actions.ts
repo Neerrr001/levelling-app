@@ -1,8 +1,9 @@
 "use server"
 import prisma from "@/lib/prisma"
 import { revalidatePath } from "next/cache";
-import { ProfileSchema } from "./validation";
+import { ProfileSchema, SignupSchema } from "./validation";
 import { ProfileState } from "@/app/types";
+import { argon2 } from "argon2";
 
 export async function addHabit(formData: FormData){
     const name = formData.get("name")
@@ -64,4 +65,40 @@ export async function updateProfile(id:number, previousState: ProfileState, form
         message: "Updated successfully"
     }
     
+}
+
+export async function createUser(previousState, formdata: FormData){
+    const username = formdata.get("username")
+    const email = formdata.get("email")
+    const password = formdata.get("password")
+
+    const result = SignupSchema.safeParse({
+        username: username,
+        email: email,
+        password: password,
+    })
+
+    if(!result.success){
+        const fieldErrors = result.error.flatten().fieldErrors;
+
+        return {
+            errors: fieldErrors
+        }
+    }
+
+    const hashPassword = argon2.hash(password)
+
+    await prisma.user.create({
+        data:{
+            username:username,
+            email:email,
+            passwordHash: hashPassword
+
+        }
+    })
+
+    return {
+        message: "Created profile successfully"
+    }
+
 }
