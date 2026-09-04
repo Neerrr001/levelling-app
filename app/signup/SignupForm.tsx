@@ -17,9 +17,6 @@ function SignupForm(){
                 <div className="text-2xl font-bold">
                     Sign up
                 </div>
-                <div className="text-xl font-semibold">
-                    {state.message && <p>{state.message}</p>}
-                </div>
             </div>
             <div className="flex flex-col gap-2">
                 <div className="flex gap-3">

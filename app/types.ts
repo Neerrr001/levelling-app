@@ -20,7 +20,6 @@ export type ProfileState = {
 } //to define state while updating profile
 
 export type SignupState = {
-    message?:string, 
     errors?:{
         username?:string[],
         email?:string[],
