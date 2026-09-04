@@ -17,7 +17,7 @@ export type ProfileState = {
         email?: string[],
         timezone?: string[]
     }
-}
+} //to define state while updating profile
 
 export type SignupState = {
     message?:string, 
@@ -26,4 +26,4 @@ export type SignupState = {
         email?:string[],
         password?:string[]
     }
-}
+} //to define state while signing up a new user
