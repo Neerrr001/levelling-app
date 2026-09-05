@@ -4,6 +4,7 @@ import { revalidatePath } from "next/cache";
 import {redirect} from "next/navigation"
 import { ProfileSchema, SignupSchema } from "./validation";
 import { ProfileState, SignupState } from "@/app/types";
+import {auth, signIn, signOut} from "@/auth"
 import * as argon2 from "argon2";
 
 export async function addHabit(formData: FormData){
@@ -115,5 +116,12 @@ export async function createUser(previousState: SignupState, formdata: FormData)
 }
 
 export async function loginUser(formdata: FormData){
+    const email = formdata.get("email")
+    const password = formdata.get("password")
+
+    await signIn("credentials",{
+        email: email,
+        password: password
+    })
 
 }
