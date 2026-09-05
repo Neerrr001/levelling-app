@@ -1,20 +1,20 @@
 import prisma from "@/lib/prisma"
 import HabitList from "./HabitList";
 import {getTodayRange} from "@/lib/date"
+import { auth } from "@/auth";
 
 
 export default async function HabitsPage(){
 
-  const user = await prisma.user.findFirst()
-  
-  if(!user){
-    return <div>User not found</div>
-  }
+  const session = await auth();
+  console.log(session)
 
-  const {todayStart, tomorrowStart} = getTodayRange(user?.timezone as string)
+  const userId = session.user?.id
+
+  const {todayStart, tomorrowStart} = getTodayRange("Asia/Kolkata")
   const habits = await prisma.habit.findMany({
     where:{
-      userId:user.id
+      userId:userId
     },
     include:{
       completions:{
@@ -31,7 +31,7 @@ export default async function HabitsPage(){
 
   return(
     <div>
-      <h1>Hello {user?.username}</h1>
+      <h1>Hello {session.user?.username}</h1>
       <HabitList habits={habits}/>
      
     </div>
