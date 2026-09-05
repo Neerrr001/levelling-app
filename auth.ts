@@ -6,7 +6,7 @@ import { LoginSchema } from "@/lib/validation"
 import * as argon2 from "argon2"
 import { error } from "console";
 
-export const {handlers, auth, signIn, signOut} = NextAuth({
+export const {auth, signIn, signOut, handlers} = NextAuth({
     ...authConfig,
     providers:[
         Credentials({
