@@ -7,9 +7,9 @@ export default async function LoginPage({searchParams}: {searchParams:Promise<{s
     const signup = params.signup
 
     return(
-        <div>
-            <div className="text-xl font-thin"> 
-              {signup === "success" && <p>Account created successfully. Please log in</p>}
+        <div className="p-2 flex flex-col items-center justify-center gap-5">
+            <div className="text-2xl font-bold"> 
+              {signup === "success" && <p>Account created successfully</p>}
             </div>
             <div>
                 <LoginForm/>
